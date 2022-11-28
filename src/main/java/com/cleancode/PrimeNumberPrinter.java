@@ -21,10 +21,7 @@ public class PrimeNumberPrinter {
             printPageHead(numberOfPrimes, pagenumber);
 
             for (int rowoffset=pageoffset; rowoffset <= pageoffset+linesPerPage-1; rowoffset++) {
-                for (int column = 0; column <= columns - 1; column++)
-                    if (rowoffset + column * linesPerPage <= numberOfPrimes)
-                        System.out.printf("%10d", primes[rowoffset + column * linesPerPage]);
-                System.out.println();
+                printRow(rowoffset);
             }
             System.out.println("\f");
 
@@ -32,6 +29,13 @@ public class PrimeNumberPrinter {
             pageoffset += linesPerPage*columns;
 
         }
+    }
+
+    private void printRow(int rowoffset) {
+        for (int column = 0; column <= columns - 1; column++)
+            if (rowoffset + column * linesPerPage <= numberOfPrimes)
+                System.out.printf("%10d", primes[rowoffset + column * linesPerPage]);
+        System.out.println();
     }
 
     public static void printPageHead(int numberOfPrimes, int pagenumber) {
