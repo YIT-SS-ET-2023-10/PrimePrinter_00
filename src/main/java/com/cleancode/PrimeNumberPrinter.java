@@ -17,9 +17,13 @@ public class PrimeNumberPrinter {
         pagenumber = 1;
         pageoffset = 1;
 
-        while (pageoffset <= numberOfPrimes) {
+        while (existPrimes()) {
             printPage();
         }
+    }
+
+    private boolean existPrimes() {
+        return pageoffset <= numberOfPrimes;
     }
 
     private void printPage() {
@@ -30,7 +34,7 @@ public class PrimeNumberPrinter {
         pageoffset += linesPerPage*columns;
     }
 
-    public static void printPageHead(int numberOfPrimes, int pagenumber) {
+    private void printPageHead(int numberOfPrimes, int pagenumber) {
         System.out.print("The First ");
         System.out.print(numberOfPrimes);
         System.out.print(" Prime Numbers === Page ");

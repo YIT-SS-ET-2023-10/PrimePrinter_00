@@ -11,7 +11,7 @@ public class PrimePrinter {
         primeNumberPrinter.printPrimeNumbers();
     }
 
-    private static int[] findPrimeNumbers(int numberOfPrimes) {
+    public static int[] findPrimeNumbers(int numberOfPrimes) {
         int primes[] = new int[numberOfPrimes+1];
         primes[1] = 2;
 
