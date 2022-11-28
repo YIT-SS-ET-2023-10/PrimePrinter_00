@@ -17,6 +17,8 @@ public class PrimeNumberGenerator {
 
     public int[] findPrimeNumbers() {
         multiples = new int[ORDMAX + 1];
+        ord = 2;
+        square = 9;
 
         int candidate;
         candidate = 1;
@@ -24,19 +26,22 @@ public class PrimeNumberGenerator {
         int primeIndex;
         primeIndex = 1;
 
-        ord = 2;
-        square = 9;
-
         while (primeIndex < numberOfPrimes) {
-            boolean possiblyPrime = false;
-            while (!possiblyPrime) {
-                candidate = getCandidate(candidate);
-                possiblyPrime = isPrimeNumber(candidate);
-            } ;
+            candidate = getNextPrimeNumber(candidate);
             primeIndex++;
             primes[primeIndex] = candidate;
         }
         return primes;
+    }
+
+    private int getNextPrimeNumber(int candidate) {
+        boolean possiblyPrime = false;
+        while (!possiblyPrime) {
+            candidate = getCandidate(candidate);
+            possiblyPrime = isPrimeNumber(candidate);
+        }
+        ;
+        return candidate;
     }
 
     private int getCandidate(int candidate) {
