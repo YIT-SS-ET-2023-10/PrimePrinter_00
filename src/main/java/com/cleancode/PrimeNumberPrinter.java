@@ -18,14 +18,24 @@ public class PrimeNumberPrinter {
         pageoffset = 1;
 
         while (pageoffset <= numberOfPrimes) {
-            printPageHead(numberOfPrimes, pagenumber);
-
-            printPageBody();
-
-            pagenumber++;
-            pageoffset += linesPerPage*columns;
-
+            printPage();
         }
+    }
+
+    private void printPage() {
+        printPageHead(numberOfPrimes, pagenumber);
+        printPageBody();
+
+        pagenumber++;
+        pageoffset += linesPerPage*columns;
+    }
+
+    public static void printPageHead(int numberOfPrimes, int pagenumber) {
+        System.out.print("The First ");
+        System.out.print(numberOfPrimes);
+        System.out.print(" Prime Numbers === Page ");
+        System.out.print(pagenumber);
+        System.out.println("\n");
     }
 
     private void printPageBody() {
@@ -42,11 +52,4 @@ public class PrimeNumberPrinter {
         System.out.println();
     }
 
-    public static void printPageHead(int numberOfPrimes, int pagenumber) {
-        System.out.print("The First ");
-        System.out.print(numberOfPrimes);
-        System.out.print(" Prime Numbers === Page ");
-        System.out.print(pagenumber);
-        System.out.println("\n");
-    }
 }
