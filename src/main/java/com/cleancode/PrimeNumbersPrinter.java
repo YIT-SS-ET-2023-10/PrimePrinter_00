@@ -30,8 +30,7 @@ public class PrimeNumbersPrinter {
         printPageHead(numberOfPrimes, pagenumber);
         printPageBody();
 
-        pagenumber++;
-        pageoffset += linesPerPage*columns;
+        prepareNextPage();
     }
 
     private void printPageHead(int numberOfPrimes, int pagenumber) {
@@ -47,6 +46,11 @@ public class PrimeNumbersPrinter {
             printRow(rowoffset);
         }
         System.out.println("\f");
+    }
+
+    private void prepareNextPage() {
+        pagenumber++;
+        pageoffset += linesPerPage*columns;
     }
 
     private void printRow(int rowoffset) {
