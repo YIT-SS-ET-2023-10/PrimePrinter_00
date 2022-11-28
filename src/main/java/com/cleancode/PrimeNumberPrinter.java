@@ -20,15 +20,19 @@ public class PrimeNumberPrinter {
         while (pageoffset <= numberOfPrimes) {
             printPageHead(numberOfPrimes, pagenumber);
 
-            for (int rowoffset=pageoffset; rowoffset <= pageoffset+linesPerPage-1; rowoffset++) {
-                printRow(rowoffset);
-            }
-            System.out.println("\f");
+            printPageBody();
 
             pagenumber++;
             pageoffset += linesPerPage*columns;
 
         }
+    }
+
+    private void printPageBody() {
+        for (int rowoffset=pageoffset; rowoffset <= pageoffset+linesPerPage-1; rowoffset++) {
+            printRow(rowoffset);
+        }
+        System.out.println("\f");
     }
 
     private void printRow(int rowoffset) {
