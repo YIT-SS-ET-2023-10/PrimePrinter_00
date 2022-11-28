@@ -20,15 +20,9 @@ public class PrimeNumberGenerator {
         ord = 2;
         square = 9;
 
-        int candidate;
-        candidate = 1;
-
-        int primeIndex;
-        primeIndex = 1;
-
-        while (primeIndex < numberOfPrimes) {
+        int candidate = 1;
+        for (int primeIndex=2; primeIndex <= numberOfPrimes;primeIndex++) {
             candidate = getNextPrimeNumber(candidate);
-            primeIndex++;
             primes[primeIndex] = candidate;
         }
         return primes;
