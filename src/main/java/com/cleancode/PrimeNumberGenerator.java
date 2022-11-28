@@ -3,9 +3,9 @@ package com.cleancode;
 public class PrimeNumberGenerator {
     int primes[];
     int numberOfPrimes;
+
     private final int ORDMAX = 30;
     private int multiples[];
-
     private int ord;
     private int square;
 
@@ -14,13 +14,17 @@ public class PrimeNumberGenerator {
     }
 
     public int[] generatePrimes() {
-        multiples = new int[ORDMAX + 1];
-        ord = 2;
-        square = 9;
+        initVariables();
 
         initPrimeNumbers();
         findPrimeNumbers();
         return primes;
+    }
+
+    private void initVariables() {
+        multiples = new int[ORDMAX + 1];
+        ord = 2;
+        square = 9;
     }
 
     private void initPrimeNumbers() {

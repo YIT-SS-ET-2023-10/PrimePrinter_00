@@ -1,6 +1,6 @@
 package com.cleancode;
 
-public class PrimeNumberPrinter {
+public class PrimeNumbersPrinter {
     final int linesPerPage = 50;
     final int columns = 4;
     int pagenumber;
@@ -8,7 +8,7 @@ public class PrimeNumberPrinter {
     int numberOfPrimes;
     int[] primes;
 
-    public PrimeNumberPrinter(int[] primes) {
+    public PrimeNumbersPrinter(int[] primes) {
         this.primes = primes;
         numberOfPrimes = primes.length-1;
     }
