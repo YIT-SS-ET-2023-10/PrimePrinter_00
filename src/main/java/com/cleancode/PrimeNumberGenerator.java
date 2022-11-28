@@ -3,8 +3,11 @@ package com.cleancode;
 public class PrimeNumberGenerator {
     int primes[];
     int numberOfPrimes;
-    final int ORDMAX = 30;
-    int multiples[];
+    private final int ORDMAX = 30;
+    private int multiples[];
+
+    private int ord;
+    private int square;
 
     public PrimeNumberGenerator(int numberOfPrimes) {
         this.numberOfPrimes = numberOfPrimes;
@@ -21,36 +24,43 @@ public class PrimeNumberGenerator {
         int primeIndex;
         primeIndex = 1;
 
-        int ord;
         ord = 2;
-
-        int square;
         square = 9;
 
-
         while (primeIndex < numberOfPrimes) {
-            boolean possiblyPrime;
-            do {
-                candidate += 2;
-                if (candidate == square) {
-                    ord++;
-                    square = primes[ord] * primes[ord];
-                    multiples[ord - 1] = candidate;
-                }
-
-                int n = 2;
-                possiblyPrime = true;
-                while (n < ord && possiblyPrime) {
-                    while (multiples[n] < candidate)
-                        multiples[n] += primes[n] + primes[n];
-                    if (multiples[n] == candidate)
-                        possiblyPrime = false;
-                    n++;
-                }
-            } while (!possiblyPrime);
+            boolean possiblyPrime = false;
+            while (!possiblyPrime) {
+                candidate = getCandidate(candidate);
+                possiblyPrime = isPrimeNumber(candidate);
+            } ;
             primeIndex++;
             primes[primeIndex] = candidate;
         }
         return primes;
     }
+
+    private int getCandidate(int candidate) {
+        candidate += 2;
+        if (candidate == square) {
+            ord++;
+            square = primes[ord] * primes[ord];
+            multiples[ord - 1] = candidate;
+        }
+        return candidate;
+    }
+
+    private boolean isPrimeNumber(int candidate) {
+        boolean possiblyPrime;
+        int n = 2;
+        possiblyPrime = true;
+        while (n < ord && possiblyPrime) {
+            while (multiples[n] < candidate)
+                multiples[n] += primes[n] + primes[n];
+            if (multiples[n] == candidate)
+                possiblyPrime = false;
+            n++;
+        }
+        return possiblyPrime;
+    }
+
 }
