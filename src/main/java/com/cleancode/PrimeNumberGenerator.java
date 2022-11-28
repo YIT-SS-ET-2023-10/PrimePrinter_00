@@ -15,17 +15,21 @@ public class PrimeNumberGenerator {
         primes[1] = 2;
     }
 
-    public int[] findPrimeNumbers() {
+    public int[] generatePrimes() {
         multiples = new int[ORDMAX + 1];
         ord = 2;
         square = 9;
 
+        findPrimeNumbers();
+        return primes;
+    }
+
+    private void findPrimeNumbers() {
         int candidate = 1;
         for (int primeIndex=2; primeIndex <= numberOfPrimes;primeIndex++) {
             candidate = getNextPrimeNumber(candidate);
             primes[primeIndex] = candidate;
         }
-        return primes;
     }
 
     private int getNextPrimeNumber(int candidate) {
