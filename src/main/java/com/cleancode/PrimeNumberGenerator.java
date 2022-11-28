@@ -11,8 +11,6 @@ public class PrimeNumberGenerator {
 
     public PrimeNumberGenerator(int numberOfPrimes) {
         this.numberOfPrimes = numberOfPrimes;
-        this.primes = new int[numberOfPrimes + 1];
-        primes[1] = 2;
     }
 
     public int[] generatePrimes() {
@@ -20,8 +18,14 @@ public class PrimeNumberGenerator {
         ord = 2;
         square = 9;
 
+        initPrimeNumbers();
         findPrimeNumbers();
         return primes;
+    }
+
+    private void initPrimeNumbers() {
+        this.primes = new int[numberOfPrimes + 1];
+        primes[1] = 2;
     }
 
     private void findPrimeNumbers() {
@@ -38,7 +42,6 @@ public class PrimeNumberGenerator {
             candidate = getCandidate(candidate);
             possiblyPrime = isPrimeNumber(candidate);
         }
-        ;
         return candidate;
     }
 
